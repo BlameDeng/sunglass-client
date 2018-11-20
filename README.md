@@ -17,3 +17,23 @@
 * 用户资料页
 * 购物车
 * 订单页
+
+### 项目结构
+```
+.
+├─ dist/              # build 生成的代码
+├─ src/               # 源码目录
+│   ├─ assets/        # 公用资源，主要是 SCSS
+│   ├─ components/    # 公用组件
+│   ├─ http/          # http 请求相关
+│   ├─ mixin/         # mixin
+│   ├─ pages/         # 页面
+│   │   ├─ cart/      # 购物车
+│   │   ├─ home/      # 首页
+│   │   ├─ member/    # 用户页
+│   │   ├─ product/   # 商品详情页
+│   ├─ utils/         # 工具库
+├── vue.config.js     # 配置多页面入口
+├── .babelrc
+├── package.json
+```

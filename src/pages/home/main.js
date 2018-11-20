@@ -28,7 +28,7 @@ new Vue({
             let index = tabs.indexOf(val)
             if (index > -1) {
                 document.title = titles[index]
-                this.hanleSlider(index + 1)
+                this.handleSlider(index + 1)
             }
         }
     },
@@ -46,7 +46,7 @@ new Vue({
             tab === 'index' ? this.$router.push('/') : this.$router.push({ path: '/category', query: { tab } })
             this.currentTab = tab
         },
-        hanleSlider(n) {
+        handleSlider(n) {
             this.$refs.slider.style.transform = `translateX(${(n-1)*60}px)`
             this.$refs.fill.style.transform = `translateX(${(n-1)*60}px)`
         }
