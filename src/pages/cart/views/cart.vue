@@ -105,6 +105,9 @@
         },
         methods: {
             changeProductCount(product, payload) {
+                if (!this.isLogin) {
+                    window.open('/member.html', '_self')
+                }
                 if (payload) {
                     if (product.count + payload <= 0) { return }
                     product.count += payload
@@ -114,6 +117,9 @@
                 this.addToCart({ count: product.count, id: product.id, type: 'changeCount' })
             },
             onClickDelete(product) {
+                if (!this.isLogin) {
+                    window.open('/member.html', '_self')
+                }
                 this.removeFromCart({ id: product.id })
             },
             onProductLabel(id) {
@@ -144,6 +150,9 @@
                 window.open(`/product.html?id=${product.id}`, '_blank')
             },
             onPay() {
+                if (!this.isLogin) {
+                    window.open('/member.html', '_self')
+                }
                 if (!this.selectedIds || !this.selectedIds.length) { return }
                 this.$router.push({ path: '/payment', query: { selectedIds: this.selectedIds } })
             }

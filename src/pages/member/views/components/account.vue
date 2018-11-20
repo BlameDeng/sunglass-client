@@ -72,7 +72,7 @@
             }
         },
         mounted() {
-            this.getReceiver()
+            this.isLogin && this.getReceiver()
         },
         methods: {
             onClickTab(tab) {

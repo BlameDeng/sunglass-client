@@ -205,7 +205,7 @@
             } else {
                 this.orderIds = [parseInt(selectedIds, 10)]
             }
-            this.getReceiver()
+            this.isLogin && this.getReceiver()
             document.title = '确认订单'
         },
         beforedestroy() {
@@ -275,6 +275,9 @@
                 }
             },
             onConfirmToPay() {
+                if (!this.isLogin) {
+                    window.open('/member.html', '_self')
+                }
                 if (!this.receiver.name || !this.receiver.phone || !this.receiver.address || !this.receiver.detail) {
                     this.$info({ message: '请先完善收货人姓名、手机号码、地址等信息！' })
                     return

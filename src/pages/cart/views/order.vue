@@ -115,8 +115,13 @@
                 }
             }
         },
-        mounted() {
-            this.getOrder()
+        watch: {
+            isLogin: {
+                handler(val) {
+                    val && this.getOrder()
+                },
+                immediate: true
+            }
         },
         methods: {
             formatDate(params) {
@@ -144,6 +149,9 @@
                 window.open(`/product.html?id=${product.id}`, '_blank')
             },
             onConfirm(order) {
+                if (!this.isLogin) {
+                    window.open('/member.html', '_self')
+                }
                 this.changeOrderStatus({ order, status: 'toEvaluate' })
                     .catch(error => {
                         this.$error({ message: error.msg })
@@ -153,6 +161,9 @@
                 window.open(`/product.html?oid=${order.id}&pid=${order.product.id}`, '_blank')
             },
             onDelete(order) {
+                if (!this.isLogin) {
+                    window.open('/member.html', '_self')
+                }
                 this.deleteOrder({ id: order.id })
             }
         }

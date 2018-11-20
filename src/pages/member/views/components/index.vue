@@ -57,6 +57,10 @@
                 this.changeProfile({ nickyname: this.nickyname, gender: this.gender })
             },
             handleAddToCart(product) {
+                if (!this.isLogin) {
+                    window.open('/member.html','_blank')
+                    return
+                }
                 this.addToCart({ count: 1, id: product.id })
             }
         }
