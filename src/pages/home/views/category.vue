@@ -66,6 +66,10 @@
                 }
             },
             handleAddToCart(product) {
+                if (!this.isLogin) {
+                    window.open('/member.html','_blank')
+                    return
+                }
                 this.addToCart({ count: 1, id: product.id })
             }
         }

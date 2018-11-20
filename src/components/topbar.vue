@@ -41,9 +41,6 @@
                 }
             }
         },
-        mounted() {
-            this.check().catch(error => {})
-        },
         beforedestroy() {
             document.removeEventListener('click', this.listenDocument)
         },
@@ -59,6 +56,10 @@
                 this.actionsVisible = true
             },
             onClickAction(type) {
+                if (!this.isLogin) {
+                    window.open('/member.html', '_blank')
+                    return
+                }
                 if (type === 'logout') {
                     this.logout()
                         .then(res => {

@@ -39,6 +39,7 @@ new Vue({
         await this.$nextTick()
         const pattern = /^.*\?tab=(\w+)$/
         if (pattern.test(window.location.href)) { this.currentTab = RegExp.$1 }
+        this.check().catch(()=>{})
     },
     methods: {
         onTab(tab) {

@@ -37,6 +37,7 @@ new Vue({
         }
     },
     async mounted() {
+        await this.check().catch(() => {})
         let href = window.location.href
         const pattern1 = /^.*\?id=(\w+)$/
         const pattern2 = /^.*\?oid=(\w+)&pid=(\w+)$/
@@ -83,6 +84,10 @@ new Vue({
             }
         },
         async onAddToCart() {
+            if (!this.isLogin) {
+                window.open('/member.html', '_blank')
+                return
+            }
             let id = this.singleProduct.id
             let count = 0
             this.cart.products.forEach(item => {
@@ -99,6 +104,10 @@ new Vue({
             }
         },
         async onBuy() {
+            if (!this.isLogin) {
+                window.open('/member.html', '_blank')
+                return
+            }
             await this.onAddToCart()
             window.open('/cart.html', '_blank')
         },

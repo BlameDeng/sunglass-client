@@ -40,12 +40,6 @@
                 },
                 deep: true,
                 immediate: true
-            },
-            isLogin: {
-                handler(val) {
-                    !val && this.$router.push('/login')
-                },
-                immediate: true
             }
         },
         mounted() {

@@ -23,6 +23,14 @@ new Vue({
         username: '',
         password: ''
     },
+    async mounted() {
+        await this.check().catch(() => {})
+        if (!this.isLogin) {
+            this.$router.push('/login')
+        } else {
+            this.$router.push('/')
+        }
+    },
     methods: {
         onLogo() { window.open('/home.html', '_self') }
     }
