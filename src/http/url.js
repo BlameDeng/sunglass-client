@@ -1,5 +1,5 @@
-const prefix = 'http://localhost:8000'
-// const prefix=''
+// const prefix = 'http://localhost:8000'
+const prefix=''
 const URL = {
     newArrival: `${prefix}/product/newarrival`,
     allProducts: `${prefix}/product/allproducts`,
