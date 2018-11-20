@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="icon" href="http://localhost:8000/img/logo.png" type="image/png">
+    <title>我的购物车</title>
+    <style>
+        [v-cloak] {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <sun-sider></sun-sider>
+        <sun-topbar></sun-topbar>
+        <header class="header" :class="{['is-login']:isLogin}">
+            <div class="header-inner">
+                <div class="logo" @click="onLogo">Sunglass<sup>&reg;</sup></div>
+            </div>
+        </header>
+        <main class="main">
+            <div class="main-inner">
+                <aside class="side-nav">
+                    <h3>全部功能</h3>
+                    <a href="javascript:0;" @click="onLink('cart')" :class="{active:currentTab==='cart'}">我的购物车</a>
+                    <a href="javascript:0;" @click="onLink('order')" :class="{active:currentTab==='order'}">已买到的宝贝</a>
+                </aside>
+                <router-view />
+            </div>
+        </main>
+        <sun-footer></sun-footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="icon" href="http://localhost:8000/img/logo.png" type="image/png">
+    <title>商品详情</title>
+    <style>
+        [v-cloak] {
+        display: none !important;
+      }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <sun-sider></sun-sider>
+        <sun-topbar></sun-topbar>
+        <header class="header" :class="{['is-login']:isLogin}">
+            <div class="header-inner">
+                <div class="logo" @click="onLogo">Sunglass<sup>&reg;</sup></div>
+            </div>
+        </header>
+        <main class="main">
+            <template v-if="singleProduct">
+                <div class="tags-bar">
+                    <a href="/home.html" target="_blank" class="tag">首页</a>
+                    <x-icon name="next" class="icon"></x-icon>
+                    <a href="/home.html#/category?tab=all" target="_blank" class="tag">全部</a>
+                    <x-icon name="next" class="icon"></x-icon>
+                    <a href="/home.html#/category?tab=male" target="_blank" class="tag" v-if="singleProduct.category==='male'">男士</a>
+                    <a href="/home.html#/category?tab=female" target="_blank" class="tag" v-if="singleProduct.category==='female'">女士</a>
+                    <x-icon name="next" class="icon"></x-icon>
+                    <a href="javascript:0;" class="tag">{{singleProduct.name}}</a>
+                </div>
+                <div class="content">
+                    <div class="imgs">
+                        <div class="show-img" ref="showImg">
+                            <img :src="singleProduct.main_image" v-if="currentImg==='main'">
+                            <img :src="singleProduct.sub_image" v-if="currentImg==='sub'">
+                        </div>
+                        <div class="focus-img">
+                            <div class="cover" @mouseenter="currentImg='main'" :class="{active:currentImg==='main'}">
+                                <img :src="singleProduct.main_image">
+                            </div>
+                            <div class="feature" @mouseenter="currentImg='sub'" :class="{active:currentImg==='sub'}">
+                                <img :src="singleProduct.sub_image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="goods-wrapper">
+                        <div class="goods-info">
+                            <div class="title">
+                                <h2 class="main-title">{{singleProduct.title}}</h2>
+                                <h4 class="sub-title">品牌授权 正品保障 急速物流</h4>
+                            </div>
+                            <div class="goods-price">
+                                <template v-if="singleProduct.discount<singleProduct.price">
+                                    <div class="origin-price">
+                                        <span class="label w3">参考价</span><span>￥{{singleProduct.price}}.00</span>
+                                    </div>
+                                    <div class="price">
+                                        <span class="label w3">优惠价</span><span>￥</span><span class="number">{{singleProduct.discount}}</span><span>.00</span>
+                                    </div>
+                                </template>
+                                <template v-else>
+                                    <div class="price">
+                                        <span class="label w2">价格</span><span>￥</span><span class="number">{{singleProduct.price}}</span><span>.00</span>
+                                    </div>
+                                </template>
+                                <div class="ems">
+                                    <span class="label w2">快递</span><span>EMS</span><span class="number"> 0.00 </span><span style="margin-left:2px;font-weight:400;">免运费</span>
+                                </div>
+                            </div>
+                            <div class="count">
+                                <div class="label w2">数量</div>
+                                <span class="minus" @click="onChangeCount(-1)" :class="{disabled:count===1}">-</span>
+                                <input type="text" v-model.number="count" @blur="countBlur">
+                                <span class="plus" @click="onChangeCount(1)">+</span>
+                                <span class="remain">库存充足</span>
+                            </div>
+                            <div class="service">
+                                <div class="label w2">服务</div>
+                                <x-icon name="return" class="icon"></x-icon>
+                                <span>七天无理由退货</span>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="pay" role="button" @click="onBuy">
+                                立即购买
+                            </div>
+                            <div class="add-to-cart" role="button" @click="onAddToCart">
+                                <x-icon name="cart" class="icon"></x-icon>
+                                加入购物车
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-container">
+                    <ul class="navbar" :class="{active:currentTab==='detail'}">
+                        <li :class="{active:currentTab==='detail'}" @click="currentTab='detail'">
+                            商品详情
+                        </li>
+                        <li :class="{active:currentTab==='evaluation'}" @click="currentTab='evaluation'">
+                            累计评价
+                            <span class="number" v-if="evaluation&&evaluation.length">{{evaluation.length}}</span>
+                        </li>
+                    </ul>
+                    <div class="content-area">
+                        <div class="detail" v-show="currentTab==='detail'">
+                            <p class="detail-item" v-for="(item,index) in singleProduct.detail.split('\n')" :key="index">
+                                {{item}}
+                            </p>
+                        </div>
+                        <div class="evaluation" v-show="currentTab==='evaluation'">
+                            <div class="add-evaluation" v-if="order&&order.status==='toEvaluate'">
+                                <h2>其他买家，需要你的建议哦！</h2>
+                                <div class="textarea-wrapper">
+                                    <textarea v-model.trim="content"></textarea>
+                                    <span class="tips">
+                                        <span :class="{warning:content.length>=300}">{{content.length}}</span> / 300
+                                    </span>
+                                </div>
+                                <div class="action">
+                                    <div class="btn" role="button" @click="onSubmit">提交评价</div>
+                                </div>
+                            </div>
+                            <ul class="content">
+                                <template v-if="evaluation&&evaluation.length">
+                                    <li v-for="item in evaluation" :key="evaluation.id" class="comment">
+                                        <div class="user">
+                                            <div class="avatar">
+                                                <x-icon name="avatar" class="icon"></x-icon>
+                                            </div>
+                                            <span class="username">{{item.nickyname||item.username}}</span>
+                                            <span class="time">{{formatDate(item.createdAt)}}</span>
+                                        </div>
+                                        <p class="evaluation-content">
+                                            {{item.content}}
+                                        </p>
+                                    </li>
+                                </template>
+                                <template v-else>
+                                    <li style="text-align:center;">
+                                        <span style="font-size:12px;cursor:default;color:rgba(0,0,0,.45);">该商品还没有评论</span>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </main>
+        <sun-footer></sun-footer>
+    </div>
+</body>
+
+</html>

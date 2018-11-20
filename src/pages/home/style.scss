@@ -1,0 +1,99 @@
+@import '@/assets/common.scss';
+body {
+    overflow-y: scroll;
+}
+#app {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    color: rgba(0, 0, 0, .65);
+    >.header {
+        margin-bottom: 10px;
+        border-bottom: 1px solid rgba(0, 0, 0, .15);
+        width: 100%;
+        >.header-inner {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            @media (min-width: 768px) {
+                flex-direction: row;
+            }
+            >.logo {
+                font-size: 28px;
+                font-weight: 600;
+                color: rgba(0, 0, 0, .85);
+                user-select: none;
+            }
+            >.navbar {
+                height: 100%;
+                >.category {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    height: 100%;
+                    position: relative;
+                    padding-bottom: 10px;
+                    >.item {
+                        display: block;
+                        width: 60px;
+                        height: 40px;
+                        text-align: center;
+                        line-height: 40px;
+                        color: rgba(0, 0, 0, .65);
+                        position: relative;
+                        &:hover {
+                            color: #f10215;
+                        }
+                        &.active {
+                            color: #f10215;
+                        }
+                        >.icon {
+                            color: #f10215;
+                            position: absolute;
+                            top: 0;
+                            right: 8px;
+                            width: 18px;
+                            height: 18px;
+                        }
+                    }
+                    >.slider {
+                        position: absolute;
+                        bottom: 0;
+                        left: 10px;
+                        border: 20px solid rgba(0, 0, 0, .15);
+                        border-top-color: transparent;
+                        border-left-color: transparent;
+                        border-right-color: transparent;
+                        pointer-events: none;
+                        transition: transform .2s linear;
+                    }
+                    >.fill {
+                        position: absolute;
+                        bottom: -1px;
+                        left: 10px;
+                        border: 20px solid #fff;
+                        border-top-color: transparent;
+                        border-left-color: transparent;
+                        border-right-color: transparent;
+                        pointer-events: none;
+                        transition: transform .2s linear;
+                    }
+                }
+            }
+        }
+    }
+    >.main {
+        width: 100%;
+        max-width: 1200px;
+        min-height: 100vh;
+        flex-grow: 1;
+        margin: 0 auto;
+    }
+}

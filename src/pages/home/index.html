@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <link rel="icon" href="http://localhost:8000/img/logo.png" type="image/png">
+    <title>Sunglass - 首页</title>
+    <style>
+        [v-cloak] {
+        display: none !important;
+      }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <sun-topbar></sun-topbar>
+        <sun-sider></sun-sider>
+        <header class="header">
+            <div class="header-inner">
+                <div class="logo">Sunglass<sup>&reg;</sup></div>
+                <nav class="navbar">
+                    <div class="category">
+                        <a href="javascript:0;" class="item" @click="onTab('index')" :class="{active:currentTab==='index'}">
+                            首页
+                        </a>
+                        <a href="javascript:0;" class="item" @click="onTab('all')" :class="{active:currentTab==='all'}">
+                            全部
+                        </a>
+                        <a href="javascript:0;" class="item" @click="onTab('female')" :class="{active:currentTab==='female'}">
+                            女士
+                        </a>
+                        <a href="javascript:0;" class="item" @click="onTab('male')" :class="{active:currentTab==='male'}">
+                            男士
+                        </a>
+                        <a href="javascript:0;" class="item" @click="onTab('discount')" :class="{active:currentTab==='discount'}">
+                            特惠
+                            <x-icon name="hot" class="icon"></x-icon>
+                        </a>
+                        <div class="slider" ref="slider"></div>
+                        <div class="fill" ref="fill"></div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main class="main">
+            <router-view />
+        </main>
+        <sun-footer></sun-footer>
+    </div>
+</body>
+
+</html>
