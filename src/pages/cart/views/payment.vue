@@ -208,7 +208,7 @@
             this.isLogin && this.getReceiver()
             document.title = '确认订单'
         },
-        beforedestroy() {
+        beforeDestroy() {
             window.removeEventListener('mousewheel', this.listenWindow)
         },
         methods: {

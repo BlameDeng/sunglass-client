@@ -41,7 +41,7 @@
                 }
             }
         },
-        beforedestroy() {
+        beforeDestroy() {
             document.removeEventListener('click', this.listenDocument)
         },
         methods: {

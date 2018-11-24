@@ -46,7 +46,7 @@
             !this.allProducts && await this.getAllProducts()
             this.fakeAllProducts = this.allProducts
         },
-        beforedestroy() {
+        beforeDestroy() {
             if (this.timerId) {
                 window.clearTimeout(this.timerId)
                 this.timerId = null

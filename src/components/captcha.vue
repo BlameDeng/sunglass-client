@@ -24,7 +24,7 @@
         mounted() {
             this.autoGet && this.getCaptcha()
         },
-        beforedestroy() {
+        beforeDestroy() {
             if (this.timerId) {
                 window.clearTimeout(this.timerId)
                 this.timerId = null
