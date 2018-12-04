@@ -2,7 +2,7 @@
 
 ## 一个基于 Vue 的多页面商城应用
 
-[效果预览](http://www.denglin.xyz:8080/home.html)
+[效果预览](http://www.denglin.xyz/home.html)
 
 ### 技术栈
 
