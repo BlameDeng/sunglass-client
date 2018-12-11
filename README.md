@@ -2,13 +2,13 @@
 
 ## 单页 / 多页面商城应用
 
-[React 版单页预览](http://www.denglin.xyz)
+[React 版单页预览](http://www.denglin.xyz)   
 [Vue 版多页预览](http://www.denglin.xyz/home.html)
 
 ### 技术栈
 
-**React**：React + Redux + React-Redux + React-Router   
-**Vue**：Vue + Vue-Router + Vuex
+**React**： React + Redux + React-Redux + React-Router   
+**Vue**： Vue + Vue-Router + Vuex
 
 ### 实现的页面
 * 首页
@@ -19,4 +19,4 @@
 * 购物车
 * 订单页
 
-### 如果你觉得
+### 如果你觉得不错，请给个Star
