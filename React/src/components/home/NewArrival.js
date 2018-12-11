@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import * as api from '../../api'
 // import { Spin } from 'antd'
-const { Spin }=window.antd
+const { Spin } = window.antd
 
 class NewArrival extends Component {
   constructor(props) {
@@ -21,6 +21,11 @@ class NewArrival extends Component {
 
   handleClickAdd(e, id) {
     e.stopPropagation()
+    const { user, history } = this.props
+    if (!user) {
+      history.push('/user')
+      return
+    }
     if (this.state.isAdding) {
       return
     }
@@ -69,7 +74,7 @@ class NewArrival extends Component {
                 >
                   <h2 className="name"> {product.name} </h2>
                   <img src={product.sub_image} alt="product" />
-                  <span className="price"> ￥{product.discount} </span>
+                  <span className="price"> ￥{product.discount.toFixed(2)} </span>
                   <div
                     className="add"
                     onClick={e => this.handleClickAdd(e, product.id)}

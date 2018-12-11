@@ -41,7 +41,8 @@ class Home extends Component {
 const mapStateToProps = state => ({
   newArrival: state.newArrival,
   allProducts: state.allProducts,
-  cart: state.cart
+  cart: state.cart,
+  user:state.user
 })
 
 const mapDispatchToProps = dispatch => ({

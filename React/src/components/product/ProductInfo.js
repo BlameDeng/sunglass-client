@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import * as api from '../../api'
 // import { Icon } from 'antd'
-const { Icon }=window.antd
+const { Icon } = window.antd
 
 class ProductInfo extends Component {
   constructor(props) {
@@ -42,6 +42,11 @@ class ProductInfo extends Component {
   }
 
   handleAddToCart(link) {
+    const { user, history } = this.props
+    if (!user) {
+      history.push('/user')
+      return
+    }
     if (this.state.isAdding) {
       return
     }
@@ -92,20 +97,28 @@ class ProductInfo extends Component {
   }
 
   render() {
-    const { product,history } = this.props
+    const { product, history } = this.props
     const { tab, count } = this.state
     return (
       <>
         <div className="tags-bar">
-          <div className="tag" onClick={()=>history.push('/')}>首页</div>
+          <div className="tag" onClick={() => history.push('/')}>
+            首页
+          </div>
           <Icon type="right" />
-          <div className="tag" onClick={()=>history.push('/')}>全部</div>
+          <div className="tag" onClick={() => history.push('/')}>
+            全部
+          </div>
           <Icon type="right" />
           {product ? (
             product.category === 'male' ? (
-              <div className="tag" onClick={()=>history.push('/')}>男士</div>
+              <div className="tag" onClick={() => history.push('/')}>
+                男士
+              </div>
             ) : (
-              <div className="tag" onClick={()=>history.push('/')}>女士</div>
+              <div className="tag" onClick={() => history.push('/')}>
+                女士
+              </div>
             )
           ) : (
             ''

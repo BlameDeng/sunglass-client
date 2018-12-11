@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import * as api from '../api'
 // import { Icon } from 'antd'
-const { Icon }=window.antd
+const { Icon } = window.antd
 
 class Sku extends Component {
   constructor(props) {
@@ -18,6 +18,11 @@ class Sku extends Component {
   }
 
   handleAddToCart(id) {
+    const { user, history } = this.props
+    if (!user) {
+      history.push('/user')
+      return
+    }
     if (this.state.isAdding) {
       return
     }
