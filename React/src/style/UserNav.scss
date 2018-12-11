@@ -1,0 +1,37 @@
+.user-navbar {
+    width: 100%;
+    max-width: 800px;
+    height: 70px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+    >.user-avatar {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        cursor: default;
+        >img{
+            width: 40px;
+            height: 40px;
+        }
+        >span {
+            font-size: 16px;
+            margin-left: 4px;
+        }
+    }
+    >.index,
+    >.account {
+        margin-left: 30px;
+        cursor: pointer;
+        user-select: none;
+        &:hover {
+            color: #f10215;
+        }
+        &.active {
+            color: #f10215;
+        }
+    }
+}

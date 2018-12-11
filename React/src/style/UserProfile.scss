@@ -1,0 +1,51 @@
+.user-profile {
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 2px;
+    max-width: 800px;
+    margin: 0 auto;
+    >.title {
+        border-bottom: 1px solid rgba(0, 0, 0, .15);
+        padding-bottom: 5px;
+        padding-left: 20px;
+        cursor: default;
+        user-select: none;
+    }
+    >.user-info {
+        margin-left: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, .15);
+        >.item {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 10px 0;
+            >.input-wrapper{
+                width: 200px;
+            }
+            >label {
+                width: 6em;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                &:not(:first-child) {
+                    width: 3em;
+                }
+            }
+        }
+    }
+    >.btn {
+        margin: 20px 80px;
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background: lighten(#f10215, 20%);
+        color: rgba(255, 255, 255, .85);
+        cursor: pointer;
+        user-select: none;
+        border-radius: 2px;
+        &:hover {
+            background: lighten(#f10215, 10%);
+        }
+    }
+}

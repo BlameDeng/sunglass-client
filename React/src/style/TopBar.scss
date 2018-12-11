@@ -1,0 +1,97 @@
+div.top-bar {
+    width: 100%;
+    height: 40px;
+    background: rgb(250, 250, 250);
+    >.top-bar-inner {
+        max-width: 1200px;
+        height: 100%;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        >div.user-info {
+            height: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            color: rgba(0, 0, 0, 0.65);
+            position: relative;
+            >i {
+                >svg {
+                    width: 25px;
+                    height: 25px;
+                    cursor: pointer;
+                }
+            }
+            >span.username {
+                display: block;
+                max-width: 80px;
+                margin: 0 3px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                cursor: pointer;
+            }
+            >.actions {
+                width: 100px;
+                text-align: center;
+                position: absolute;
+                z-index: 25;
+                top: 100%;
+                right: 0;
+                cursor: pointer;
+                background: #fff;
+                user-select: none;
+                border: 1px solid rgba(0, 0, 0, .15);
+                border-top: none;
+                border-bottom-left-radius: 2px;
+                border-bottom-right-radius: 2px;
+                box-shadow: 0 4px 8px -4px rgba(0, 0, 0, .15);
+                >.action {
+                    height: 28px;
+                    line-height: 28px;
+                    &:last-child {
+                        border-bottom-left-radius: 2px;
+                        border-bottom-right-radius: 2px;
+                    }
+                    &:hover {
+                        color: #f10215;
+                    }
+                }
+            }
+        }
+        >div.top-bar-cart {
+            display: block;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            position: relative;
+            color: rgba(0, 0, 0, 0.65);
+            >i {
+                >svg {
+                    width: 25px;
+                    height: 25px;
+                    cursor: pointer;
+                }
+            }
+            >.badge {
+                user-select: none;
+                position: absolute;
+                top: -10px;
+                right: -10px;
+                background: #f10215;
+                color: #fff;
+                font-size: 14px;
+                border-radius: 50%;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                width: 22px;
+                height: 22px;
+                transform: scale(0.7);
+                pointer-events: none;
+            }
+        }
+    }
+}

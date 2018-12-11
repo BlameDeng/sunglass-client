@@ -1,0 +1,39 @@
+.lorem {
+    max-width: 1200px;
+    margin: 40px auto;
+    >.upper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #fff;
+        width: 100%;
+        >.img-wrapper {
+            width: 30%;
+            overflow: hidden;
+            flex-shrink: 0;
+            >img {
+                border-radius: 2px;
+                max-width: 100%;
+                transition: all 0.2s linear;
+                &:hover {
+                    transform: scale(1.2);
+                }
+            }
+        }
+        >.text {
+            width: 40%;
+            padding: 0 10px;
+            >h2 {
+                text-align: center;
+                font-weight: 600;
+                cursor: default;
+                margin: 10px 0;
+            }
+            >p {
+                text-align: center;
+                font-weight: 500;
+                cursor: default;
+            }
+        }
+    }
+}

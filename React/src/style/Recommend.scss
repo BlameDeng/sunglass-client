@@ -1,0 +1,25 @@
+.recommend-wrapper {
+    >h4.title {
+        max-width: 800px;
+        margin: 0 auto;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+        font-size: 14px;
+        padding: 10px 20px;
+        cursor: pointer;
+        user-select: none;
+        text-align: end;
+        color: #f10215;
+    }
+    >.recommend {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 20px 0;
+        flex-direction: column;
+        @media (min-width: 768px) {
+            flex-direction: row;
+        }
+    }
+}
