@@ -5,7 +5,7 @@
     "dependencies": {
         "@tweenjs/tween.js": "^17.2.0",
         "antd": "^3.11.0",
-        "axios": "^0.18.0",
+        "axios": "^0.21.1",
         "prop-types": "^15.6.2",
         "react": "^16.6.3",
         "react-dom": "^16.6.3",
